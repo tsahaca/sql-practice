@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS users;
 
 -- Create the table
@@ -9,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- Copy data from the CSV file into the table
 COPY users(id, name, age) 
-FROM '/docker-entrypoint-initdb.d/data.csv' 
+FROM '/docker-entrypoint-initdb.d/demo_db/data.csv' 
 DELIMITER ',' 
 CSV HEADER;
 
@@ -20,7 +21,7 @@ CREATE TABLE customers (
 );
 
 COPY customers(customer_id, customer_name) 
-FROM '/docker-entrypoint-initdb.d/customers_sample.csv' 
+FROM '/docker-entrypoint-initdb.d/demo_db/customers_sample.csv' 
 DELIMITER ',' 
 CSV HEADER;
 
@@ -33,6 +34,6 @@ CREATE TABLE orders (
 );
 
 COPY orders(order_id, customer_id, order_date, total_amount) 
-FROM '/docker-entrypoint-initdb.d/orders_sample.csv' 
+FROM '/docker-entrypoint-initdb.d/demo_db/orders_sample.csv' 
 DELIMITER ',' 
 CSV HEADER;

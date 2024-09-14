@@ -10,8 +10,12 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./data:/docker-entrypoint-initdb.d
+      - ./demo_db:/docker-entrypoint-initdb.d/demo_db
+      - ./adventure_works_db:/docker-entrypoint-initdb.d/adventure_works_db
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./northwind.sql:/docker-entrypoint-initdb.d/northwind.sql
+      - ./adventure_works.sql:/docker-entrypoint-initdb.d/adventure_works.sql
+
       - postgres_data:/var/lib/postgresql/data
 
   pgadmin:
