@@ -1,8 +1,8 @@
 version: '3'
 services:
   postgres:
-    image: postgres:alpine
-    container_name: postgres_alpine
+    image: postgres
+    container_name: postgres
     environment:
       POSTGRES_DB: demo_db
       POSTGRES_USER: app_user
@@ -11,11 +11,10 @@ services:
       - "5432:5432"
     volumes:
       - ./demo_db:/docker-entrypoint-initdb.d/demo_db
-      - ./adventure_works_db:/docker-entrypoint-initdb.d/adventure_works_db
+#      - ./adventure_works_db:/docker-entrypoint-initdb.d/adventure_works_db
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./northwind.sql:/docker-entrypoint-initdb.d/northwind.sql
-      - ./adventure_works.sql:/docker-entrypoint-initdb.d/adventure_works.sql
-
+#      - ./adventure_works.sql:/docker-entrypoint-initdb.d/adventure_works.sql
       - postgres_data:/var/lib/postgresql/data
 
   pgadmin:

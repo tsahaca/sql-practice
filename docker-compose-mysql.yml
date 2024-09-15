@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: arm64v8/mysql:8.4.2
+    container_name: mysql_server
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: demo_db
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  # workbench:
+  #   image: mysql-workbench
+  #   container_name: mysql_workbench
+  #   environment:
+  #     DISPLAY: ${DISPLAY}
+  #   volumes:
+  #     - /tmp/.X11-unix:/tmp/.X11-unix
+  #   depends_on:
+  #     - mysql
+  #   links:
+  #     - mysql
+  #   entrypoint: mysql-workbench
+
+volumes:
+  mysql_data:
+    driver: local
