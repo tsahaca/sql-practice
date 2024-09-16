@@ -11,8 +11,11 @@ services:
       MYSQL_PASSWORD: mysql
     ports:
       - "3306:3306"
+    command: --secure-file-priv=""  
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./data:/docker-entrypoint-initdb.d
+      - ./csv:/csv
 
   # workbench:
   #   image: mysql-workbench
